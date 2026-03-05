@@ -16,7 +16,6 @@ import '../app.dart';
 import '../constants/api_constants.dart';
 import '../constants/app_constants.dart';
 import '../constants/storage_constants.dart';
-import '../firebase_options.dart';
 import '../services/api_service/api_interceptor.dart';
 import '../services/api_service/api_service.dart';
 import '../services/dynamic_links_service/deep_links.dart';
@@ -32,7 +31,7 @@ part 'app_providers.g.dart';
 void mainInit (Ref ref) async{
 
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,name: Platform.isAndroid ? null : "C2C");
+  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,name: Platform.isAndroid ? null : "C2C");
   // App Orientation
   SystemChrome.setPreferredOrientations(
     // kDebugMode ? [DeviceOrientation.portraitDown] :
