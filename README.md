@@ -1,6 +1,6 @@
 # Project name
 
-C2C
+Riverpod Demo
 
 #### Run these commands:
 
