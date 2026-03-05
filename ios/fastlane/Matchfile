@@ -1,0 +1,5 @@
+git_url("https://github.com/kasim23eww/c2c_certificates_development.git")
+
+storage_mode("git")
+
+type("appstore")
