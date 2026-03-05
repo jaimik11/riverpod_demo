@@ -58,7 +58,7 @@ void mainInit (Ref ref) async{
   await Future.wait( [
 
     Hive.openBox(StorageConstants.boxName),
-    ref.read(notificationManagerProvider).init()
+    // ref.read(notificationManagerProvider).init()
   ] );
 
   /// 👇 Deep Link Initialization
@@ -109,10 +109,10 @@ LocalRepository localRepository(_){
   return LocalRepositoryImpl();
 }
 
-@riverpod
-MyNotificationManager notificationManager(_){
-  return MyNotificationManager();
-}
+// @riverpod
+// MyNotificationManager notificationManager(_){
+//   return MyNotificationManager();
+// }
 
 
 @riverpod

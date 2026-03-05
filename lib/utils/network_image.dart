@@ -166,7 +166,7 @@ class CommonProfileAvatar {
     return ClipRRect(
       borderRadius: BorderRadius.circular(borderRadius ?? 0),
       child: Center(
-        child: Assets.images.png.splash.image(
+        child: Assets.images.svg.backIcon.svg(
           width: width ?? double.infinity,
           height: height ?? double.infinity,
           fit: BoxFit.cover,
