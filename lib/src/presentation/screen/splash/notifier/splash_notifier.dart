@@ -53,18 +53,6 @@ class SplashNotifier extends _$SplashNotifier {
 
       if((fallbackTimer?.isActive) ?? false){
         redirectScreen();
-        AppConstants.s3Model = S3Model.fromJson({
-          "key": "AKIAWQEFG5RG2KSLSHWJ",
-          "secret": "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",
-          "bucket": "c2c-developments",
-          "region": "ap-south-1",
-          "url": "https://c2c-developments.s3.ap-south-1.amazonaws.com"
-        });
-        AppConstants.googleMapKey = "AIzaSyAXARoSGDVeZxn1AFVRS_8-gR9R0j56gD8";
-        AppConstants.dealExpireMinutes = 360;
-        AppConstants.pdfURL = "https://dev.c2c.sa/secure-file/sign.pdf";
-        AppConstants.sellerNafathSignatureUrl = "https://dev.c2c.sa/secure-file/seller-sign.pdf";
-
       }
 
 
