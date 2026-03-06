@@ -11,8 +11,11 @@ import 'package:c2c/widget/network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../constants/app_size_constants.dart';
+import '../../../../di/theme_notifier.dart';
+import '../../../../enums/language_code.dart';
 import '../../../../enums/text_color_type.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../../theme/app_colors.dart';
@@ -20,6 +23,7 @@ import '../../../../theme/text_styles.dart';
 import '../../../../utils/app_validator.dart';
 import '../../../../utils/common_consumer.dart';
 import '../../../../widget/app_button.dart';
+import '../../../../widget/app_radio_button.dart';
 import '../../../../widget/app_text_field.dart';
 import '../../../../widget/custom_app_bar.dart';
 import 'notifier/personal_details_notifier.dart';
@@ -268,6 +272,92 @@ class PersonalDetailsScreen extends StatelessWidget {
       filled: true,
       validator:
           (value) => AppValidator.name(value: value!),
+    );
+  }
+
+
+
+  Widget languageSheetContent() {
+    return Consumer(
+      builder: (BuildContext context, WidgetRef ref, Widget? child) {
+        var state = ref.watch(personalDetailsNotifierProvider);
+        return Column(
+          spacing: 8,
+          children: [
+            CustomRadioOption<LanguageCode?>(
+              value: LanguageCode.en,
+              groupValue: state.selectedLocale,
+              label: 'English',
+              onChanged: (val) {
+                ref
+                    .read(personalDetailsNotifierProvider.notifier)
+                    .toggle(LanguageCode.en);
+              },
+            ),
+
+            CustomRadioOption<LanguageCode?>(
+              value: LanguageCode.ar,
+              groupValue: state.selectedLocale,
+              label: 'عربي',
+              onChanged: (val) {
+                ref
+                    .read(personalDetailsNotifierProvider.notifier)
+                    .toggle(LanguageCode.ar);
+              },
+            ),
+
+            SizedBox(height: 16),
+            AppButton(
+              onPressed: () async {
+                ref.read(personalDetailsNotifierProvider.notifier).changeLanguageApi();
+                context.pop();
+              },
+              buttonText: context.translate.apply,
+              buttonRadius: AppSizeConstants.kBorderRadius,
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget themeContent() {
+    return Consumer(
+      builder: (BuildContext context, WidgetRef ref, Widget? child) {
+        var state = ref.watch(themeNotifierProvider);
+
+        return Column(
+          spacing: 8,
+          children: [
+            CustomRadioOption<ThemeMode?>(
+              value: ThemeMode.light,
+              groupValue: AppConstants.defaultTheme,
+              label: context.translate.light,
+              onChanged: (val) {
+                ref
+                    .read(themeNotifierProvider.notifier)
+                    .switchTheme();
+                context.pop();
+              },
+            ),
+
+            CustomRadioOption<ThemeMode?>(
+              value: ThemeMode.dark,
+              groupValue: AppConstants.defaultTheme,
+              label: context.translate.dark,
+              onChanged: (val) {
+                ref
+                    .read(themeNotifierProvider.notifier)
+                    .ref
+                    .read(themeNotifierProvider.notifier)
+                    .switchTheme();
+                context.pop();
+              },
+            ),
+            const SizedBox(height: 16,),
+          ],
+        );
+      },
     );
   }
 }

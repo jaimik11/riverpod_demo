@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../../enums/language_code.dart';
+
 part 'personal_details_state.freezed.dart';
 
 @freezed
@@ -14,5 +16,7 @@ abstract class PersonalDetailsState with _$PersonalDetailsState {
     @Default(null) FocusNode? nameNode,
     @Default(null) FocusNode? numberNode,
     @Default('') String selectedImage,
+    @Default(null) LanguageCode? selectedLocale,
+
   }) = _PersonalDetailsState;
 }

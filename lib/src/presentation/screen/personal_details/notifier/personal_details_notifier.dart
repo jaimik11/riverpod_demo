@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:c2c/di/app_providers.dart';
+import 'package:c2c/enums/language_code.dart';
 import 'package:c2c/enums/profile_details_type.dart';
 import 'package:c2c/l10n/localization.dart';
 import 'package:c2c/router/navigation_methods.dart';
@@ -13,6 +14,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../constants/app_constants.dart';
+import '../../../../../di/local_notifier.dart';
 import '../../../../../enums/picker_type.dart';
 import '../../../../../enums/s3_bucket_folder_enum.dart';
 import '../../../../../services/aws_s3_service.dart';
@@ -45,10 +47,16 @@ class PersonalDetailsNotifier extends _$PersonalDetailsNotifier {
         text: "AppConstants.userModel?.name "?? "",
       ),
       nameNode: FocusNode(),
+      selectedLocale: AppConstants.currentLocale,
       selectedImage: "AppConstants.userModel?.profilePicture" ?? "",
     );
     return state;
   }
+
+  emitCurrentLocale(){
+    state = state.copyWith(selectedLocale: AppConstants.currentLocale);
+  }
+
 
   void pickImage() {
     ImagePickSheet.showImagePickBottomSheet(
@@ -135,5 +143,45 @@ class PersonalDetailsNotifier extends _$PersonalDetailsNotifier {
       //   Routes.homeStreetDeals,
       // );
     }
+  }
+
+  void toggle(LanguageCode selectedLocale) {
+
+    if (state.selectedLocale != selectedLocale) {
+      print("called");
+      state = state.copyWith(selectedLocale: selectedLocale);
+    }
+
+  }
+
+  Future<void> changeLanguageApi() async {
+    ref.read(localeNotifierProvider.notifier).changeLocale(lang: state.selectedLocale ?? AppConstants.defaultLocale);
+    return;
+    // try {
+    //
+    //   final response =  await remoteRepository?.changeLanguageApi(langCode: state.selectedLocale?.name ?? AppConstants.defaultLocale.name);
+    //   if (response?.success ?? false) {
+    //     callUserAPI();
+    //     final container = ProviderScope.containerOf(
+    //       AppConstants.globalKey.currentContext!,
+    //     );
+    //     container
+    //         .read(homeStreetDealsNotifierProvider.notifier)
+    //         .getInspectorListAPI();
+    //     ref.read(localeNotifierProvider.notifier).changeLocale(lang: state.selectedLocale ?? AppConstants.defaultLocale);
+    //     ref.read(
+    //       homeStreetDealsNotifierProvider.notifier,
+    //     ).homeDetailAPI();
+    //     ref.read(
+    //       homeStreetDealsNotifierProvider.notifier,
+    //     ).purchaseSupport();
+    //     ref.read(
+    //       homeStreetDealsNotifierProvider.notifier,
+    //     ).homeBannerAPI();
+    //   } else {
+    //   }
+    // } catch (e) {
+    //   logger.e("changeLanguageApi: $e");
+    // }
   }
 }
