@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:c2c/enums/upload_type.dart';
 import 'package:c2c/enums/user_type.dart';
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 
