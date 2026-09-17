@@ -30,9 +30,6 @@ class SplashScreen extends StatelessWidget {
                 ),
               );
             }
-            // else if (state.path == Routes.homeStreetDeals) {
-            //   notifier.handlePendingNotification();
-            // }
             else {
               print("elseelseelseelseelseelse");
 

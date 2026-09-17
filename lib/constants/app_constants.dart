@@ -10,7 +10,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../enums/language_code.dart';
 import '../services/google_place/google_place_model.dart';
-import '../src/domain/model/init_model/init_model.dart';
 
 
 class AppConstants {
@@ -35,11 +34,8 @@ class AppConstants {
   static LatLng currentLatLng = const LatLng(0, 0);
 
   static GooglePlaceModel? userLocation;
-  static Map<String, dynamic>? pendingNotificationData;
-  static String? deepLinkUrl;
 
 
-  static String firebaseToken = "1234";
 
   static String versionNo = "${globalKey.currentContext!.translate.version} 1.0.0 (6)";
 
@@ -48,7 +44,6 @@ class AppConstants {
 
   static String? pdfURL;
   static String? sellerNafathSignatureUrl;
-  static S3Model? s3Model;
   static int dealExpireMinutes = 0;
 
   static bool isLoggedIn = false;

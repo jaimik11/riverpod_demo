@@ -1,19 +1,13 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:io';
 
-import 'package:c2c/enums/notification_type.dart';
 import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/services/my_notification_manager.dart';
 import 'package:c2c/src/data/repository/remote/remote_repository.dart';
-import 'package:c2c/utils/common_methods.dart';
 import 'package:c2c/widget/app_dialog.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app_badge_control/flutter_app_badge_control.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:store_redirect/store_redirect.dart';
 
 import '../../../../../constants/app_constants.dart';
 import '../../../../../constants/storage_constants.dart';
@@ -42,8 +36,6 @@ class SplashNotifier extends _$SplashNotifier {
 
   @override
   SplashState build() {
-    _removeBadge();
-
     // Start fallback timer for 3 seconds
     fallbackTimer = Timer(const Duration(seconds: 3), () {
       logger.i("API did not respond within 3 seconds, redirecting...");
@@ -82,7 +74,6 @@ class SplashNotifier extends _$SplashNotifier {
       if(response.jsonData != null){
         InitModel initModel = InitModel.fromJson(response.jsonData);
 
-        AppConstants.s3Model = initModel.s3;
         AppConstants.googleMapKey = initModel.googleMapKey ?? '';
         AppConstants.inspectFee = initModel.inspectFee ?? 0;
         AppConstants.dealExpireMinutes = initModel.dealExpireMinutes ?? 0;
@@ -126,16 +117,6 @@ class SplashNotifier extends _$SplashNotifier {
     bool showLanguageScreen =
         await localRepository?.getData(StorageConstants.languageOpen) ?? false;
 
-
-    // 👇 Check if a deep link was set
-    final uri = ref.read(deepLinkUriProvider);
-    if (uri != null) {
-      // 👇 Deep link routing logic here
-      if (uri.pathSegments.isNotEmpty) {
-        // Add more routes based on deep link
-        print("URLLLL FROM DEEPLINK SPLASH $uri");
-      }
-    }
     String path;
  /*   if (userModel?.id != null) {
       if (userModel?.name?.isNotEmpty ?? false) {
@@ -161,39 +142,6 @@ class SplashNotifier extends _$SplashNotifier {
     // }
 
     state = state.copyWith(path: path, screenState: ScreenState.done);
-  }
-
-  /// Handles pending notifications
-  Future<void> handlePendingNotification() async {
-    print(
-      'AppConstants.pendingNotificationData -- ${AppConstants.pendingNotificationData} ${AppConstants.deepLinkUrl}',
-    );
-    if (AppConstants.pendingNotificationData != null) {
-      final data = AppConstants.pendingNotificationData;
-      AppConstants.pendingNotificationData = null; // Clear after handling
-
-      MyNotificationManager notificationService = MyNotificationManager();
-
-      if (data != null && data.isNotEmpty) {
-        switch (notificationService.notificationType) {
-          case null:
-            // TODO: Handle this case.
-            throw UnimplementedError();
-          case NotificationType.idVerified:
-            // TODO: Handle this case.
-            throw UnimplementedError();
-          case NotificationType.unknown:
-            // TODO: Handle this case.
-            throw UnimplementedError();
-         }
-      }
-    } else if (AppConstants.deepLinkUrl != null) {
-      _handleDeepLink();
-    }else {
-      // AppConstants.globalKey.currentContext?.popAllAndPush(
-      //   Routes.homeStreetDeals,
-      // );
-    }
   }
 
   Future<void> _handleAppStatus({
@@ -247,7 +195,7 @@ class SplashNotifier extends _$SplashNotifier {
       message: message,
       positiveText:AppConstants.globalKey.currentContext!.translate.upgrade,
       onPositiveTap: () {
-        StoreRedirect.redirect(androidAppId: androidAppID, iOSAppId: iosAppID);
+        redirectScreen();
       },
       onNegativeTap: () {
         redirectScreen(); // skip update
@@ -272,34 +220,4 @@ class SplashNotifier extends _$SplashNotifier {
     );
   }
 
-
-  /// Handles deeplink
-  Future<void> _handleDeepLink() async {
-    print(
-      'AppConstants.deepLinkUrl -- ${AppConstants.deepLinkUrl}',
-    );
-    if (AppConstants.deepLinkUrl != null) {
-
-      final data = AppConstants.deepLinkUrl;
-      AppConstants.deepLinkUrl = null; // Clear after handling
-      print(
-        'AppConstants.data -- ${data}',
-      );
-      if (data != null && data.isNotEmpty) {
-        CommonMethods.getRouteFromDynamicLinks(Uri.parse(data), AppConstants.globalKey.currentContext!);
-      }
-    } else {
-      // AppConstants.globalKey.currentContext?.popAllAndPush(
-      //   Routes.homeStreetDeals,
-      // );
-    }
-  }
-
-  Future<void> _removeBadge() async {
-    // The app badge plugin has no web implementation.
-    if (kIsWeb) return;
-    if (await FlutterAppBadgeControl.isAppBadgeSupported()) {
-      FlutterAppBadgeControl.removeBadge();
-    }
-  }
 }

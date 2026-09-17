@@ -17,7 +17,6 @@ import '../constants/app_constants.dart';
 import '../constants/storage_constants.dart';
 import '../services/api_service/api_interceptor.dart';
 import '../services/api_service/api_service.dart';
-import '../services/dynamic_links_service/deep_links.dart';
 import '../src/data/repository/local/local_repository.dart';
 import '../src/data/repository/local/local_repository_impl.dart';
 import '../src/data/repository/remote/remote_repository.dart';
@@ -28,7 +27,6 @@ part 'app_providers.g.dart';
 void mainInit (Ref ref) async{
 
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,name: Platform.isAndroid ? null : "C2C");
   // App Orientation
   SystemChrome.setPreferredOrientations(
     // kDebugMode ? [DeviceOrientation.portraitDown] :
@@ -59,15 +57,7 @@ void mainInit (Ref ref) async{
   await Future.wait( [
 
     Hive.openBox(StorageConstants.boxName),
-    // ref.read(notificationManagerProvider).init()
   ] );
-
-  /// 👇 Deep Link Initialization
-  final deepLink = await ref.read(deepLinkingProvider).initDeepLinking();
-
-  /// 👇 Save it to a provider for use in the c2c
-  ref.read(deepLinkUriProvider.notifier).state = deepLink;
-  print("deeplink URL. 00 ${deepLink}");
 
   runApp( const ProviderScope ( child:  App() ));
 }
@@ -110,12 +100,6 @@ LocalRepository localRepository(_){
   return LocalRepositoryImpl();
 }
 
-// @riverpod
-// MyNotificationManager notificationManager(_){
-//   return MyNotificationManager();
-// }
-
-
 @riverpod
 Stream<bool> getConnectivity(Ref ref){
   final connectionChecker = InternetConnectionChecker.instance;
@@ -127,25 +111,4 @@ Stream<bool> getConnectivity(Ref ref){
     });
 }
 
-
-@Riverpod(keepAlive: true)
-DeepLinking deepLinking(Ref ref) {
-  final instance = DeepLinking();
-  ref.onDispose(instance.dispose);
-  return instance;
-}
-
-@riverpod
-Future<Uri?> initialDeepLink(Ref ref) async {
-  final deepLinking = ref.watch(deepLinkingProvider);
-  return await deepLinking.initDeepLinking();
-}
-
-@riverpod
-class DeepLinkUri extends _$DeepLinkUri {
-  @override
-  Uri? build() => null;
-
-  void set(Uri? uri) => state = uri;
-}
 

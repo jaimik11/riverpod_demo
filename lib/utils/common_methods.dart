@@ -17,7 +17,6 @@ import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:picker_pro_max_ultra/media_picker_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/app_constants.dart';
 import '../theme/app_colors.dart';
@@ -287,40 +286,6 @@ class CommonMethods {
     return imageExtensions.contains(ext);
   }
 
-  static void getRouteFromDynamicLinks(Uri uri, BuildContext context) {
-    if (uri.pathSegments.isEmpty) return;
-
-    final pathSegments = uri.pathSegments;
-
-    // Check if the first segment is a locale
-    final cleanedSegments =
-    (pathSegments.isNotEmpty &&
-        (pathSegments.first == 'ar' || pathSegments.first == 'en'))
-        ? pathSegments.sublist(1)
-        : pathSegments;
-
-    // Remove empty segments and any trailing slash artifacts
-    final finalCleanedSegments =
-    cleanedSegments.where((segment) => segment.trim().isNotEmpty).toList();
-
-    final pathSegmentCount = finalCleanedSegments.length;
-
-    final firstSegment = finalCleanedSegments.first;
-    final lastSegment = finalCleanedSegments.last;
-    print("firstSegment -- $firstSegment -- lastSegment -- ${lastSegment} -- Count --$pathSegmentCount");
-
-    switch (firstSegment) {
-      case 'product':
-        // handleProductCodePage(uri, pathSegmentCount, lastSegment);
-        break;
-
-      default:
-        return;
-    }
-  }
-
-
-
   static String formatWithSpaceEvery3Digits(String input) {
     return input.replaceAllMapped(RegExp(r".{1,3}"), (match) => "${match.group(0)} ").trim();
   }
@@ -567,16 +532,6 @@ class CommonMethods {
 
     return '$hourPart$minutePart';
   }
-
-  static void downloadInvoice(String url) async {
-    // if (await canLaunchUrl(Uri.parse(url))) {
-    downloadPdf(url,getPdfFileName(url));
-    await launchUrl(Uri.parse(url));
-    // } else {
-    //   throw "Could not launch WhatsApp";
-    // }
-  }
-
 
   static Future<String?> downloadPdf(String url, String fileName) async {
     try {
