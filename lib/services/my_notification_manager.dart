@@ -2,20 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:c2c/enums/upload_type.dart';
-import 'package:c2c/enums/user_type.dart';
-import 'package:c2c/router/navigation_methods.dart';
-import 'package:c2c/router/route_observer.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/app_constants.dart';
-import '../di/app_providers.dart';
 import '../enums/notification_type.dart';
-import '../router/app_pages.dart';
 import '../utils/logger_util.dart';
 
 /// Enum for App States

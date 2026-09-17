@@ -1,11 +1,9 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../constants/app_constants.dart';
 import '../constants/storage_constants.dart';
-import '../enums/language_code.dart';
 import '../src/data/repository/local/local_repository.dart';
 import 'app_providers.dart';
 part 'theme_notifier.g.dart';

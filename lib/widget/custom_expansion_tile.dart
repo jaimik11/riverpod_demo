@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../enums/text_color_type.dart';
 import '../gen/assets.gen.dart';
-import '../theme/app_colors.dart';
 import '../theme/text_styles.dart';
 
 class CustomExpansionTile extends StatefulWidget {

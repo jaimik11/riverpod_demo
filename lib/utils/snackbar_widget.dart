@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants/app_constants.dart';
 import '../constants/app_fonts.dart';
-import '../gen/assets.gen.dart';
 
 class TopSnackBar extends StatelessWidget {
   final String message;

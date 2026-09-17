@@ -1,4 +1,3 @@
-import 'package:c2c/enums/language_code.dart';
 import 'package:c2c/l10n/localization.dart';
 
 import '../constants/app_constants.dart';

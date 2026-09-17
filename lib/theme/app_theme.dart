@@ -1,10 +1,8 @@
 import 'package:c2c/constants/app_ui_constants.dart';
-import 'package:c2c/enums/text_color_type.dart';
 import 'package:flutter/material.dart';
 import 'package:picker_pro_max_ultra/platform_config.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../constants/app_constants.dart';
-import '../constants/app_fonts.dart';
 import 'text_styles.dart';
 import '../../gen/fonts.gen.dart';
 import 'app_colors.dart';

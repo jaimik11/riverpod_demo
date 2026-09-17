@@ -1,11 +1,8 @@
 import 'dart:ui';
 
-import 'package:c2c/gen/assets.gen.dart';
 import 'package:c2c/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-import 'logo_animated_loading.dart';
-import 'package:lottie/lottie.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class LoadingDialog {

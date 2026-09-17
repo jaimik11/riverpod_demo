@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:c2c/enums/text_color_type.dart';
 import 'package:c2c/theme/app_colors.dart';

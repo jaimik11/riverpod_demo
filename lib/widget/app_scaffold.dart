@@ -1,17 +1,7 @@
-import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/router/navigation_methods.dart';
-import 'package:c2c/src/presentation/screen/personal_details/personal_details_screen.dart';
 import 'package:c2c/widget/app_annotated_region.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../constants/app_constants.dart';
-import '../di/local_notifier.dart';
 import '../di/theme_notifier.dart';
-import '../enums/language_code.dart';
-import '../enums/profile_details_type.dart';
-import '../src/presentation/screen/personal_details/personal_details_args.dart';
-import '../utils/common_sheet.dart';
 
 class AppScaffold extends ConsumerWidget {
   final Widget body;
@@ -32,25 +22,27 @@ class AppScaffold extends ConsumerWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: appBar,
       backgroundColor: backgroundColor,
       body: AppAnnotatedRegion(child: SafeArea(child: body)),
-      floatingActionButton: floatingActionButton ?? FloatingActionButton(
-          onPressed: () async {
-        // await ref.read(themeNotifierProvider.notifier).switchTheme();
-        //     CommonSheet.showAppBottomSheet(
-        //       title: context.translate.select_language,
-        //       contentPadding: EdgeInsets.zero,
-        //       onPositiveTap: () {},
-        //       onNegativeTap: () {},
-        //       content:  PersonalDetailsScreen(args: PersonalDetailsArgs(
-        //         type: ProfileDetailsType.createProfile,
-        //       )).languageSheetContent()
-        //     );
-      },
-      ),
+      floatingActionButton:
+          floatingActionButton ??
+          FloatingActionButton(
+            onPressed: () async {
+              await ref.read(themeNotifierProvider.notifier).switchTheme();
+              //     CommonSheet.showAppBottomSheet(
+              //       title: context.translate.select_language,
+              //       contentPadding: EdgeInsets.zero,
+              //       onPositiveTap: () {},
+              //       onNegativeTap: () {},
+              //       content:  PersonalDetailsScreen(args: PersonalDetailsArgs(
+              //         type: ProfileDetailsType.createProfile,
+              //       )).languageSheetContent()
+              //     );
+            },
+          ),
       bottomNavigationBar: bottomNavigationBar,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
     );

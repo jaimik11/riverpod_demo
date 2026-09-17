@@ -1,8 +1,3 @@
-import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/router/navigation_methods.dart';
-import 'package:c2c/theme/app_colors.dart';
-import 'package:c2c/theme/text_styles.dart';
-import 'package:c2c/widget/app_scaffold.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter/services.dart' show SystemUiOverlayStyle;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,7 +5,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../enums/profile_details_type.dart';
 import '../../../../enums/screen_state.dart';
-import '../../../../gen/assets.gen.dart';
 import '../../../../router/app_routes.dart';
 import '../personal_details/personal_details_args.dart';
 import 'notifier/splash_notifier.dart';

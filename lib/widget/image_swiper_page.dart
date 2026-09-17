@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:c2c/router/navigation_methods.dart';
 import 'package:c2c/widget/app_scaffold.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:card_swiper/card_swiper.dart';

@@ -1,25 +1,13 @@
 import 'package:c2c/constants/app_size_constants.dart';
-import 'package:c2c/constants/app_ui_constants.dart';
 import 'package:c2c/enums/text_color_type.dart';
-import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/router/navigation_methods.dart';
 import 'package:c2c/theme/text_styles.dart';
-import 'package:c2c/utils/snackbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/app_constants.dart';
-import '../constants/app_fonts.dart';
-import '../gen/assets.gen.dart';
 import '../theme/app_colors.dart';
 import '../widget/app_button.dart';
 import '../widget/network_image.dart';
-import 'common_methods.dart';
-import 'logger_util.dart';
 
 class CommonSheet {
   static Future<void> showAppBottomSheet({

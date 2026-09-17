@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:c2c/constants/api_constants.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 import 'package:c2c/constants/app_constants.dart';
 import 'package:c2c/enums/profile_details_type.dart';
 import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/router/navigation_methods.dart';
 import 'package:c2c/src/presentation/screen/personal_details/personal_details_args.dart';
 import 'package:c2c/widget/app_scaffold.dart';
 import 'package:c2c/widget/network_image.dart';
@@ -17,7 +17,6 @@ import '../../../../constants/app_size_constants.dart';
 import '../../../../di/theme_notifier.dart';
 import '../../../../enums/language_code.dart';
 import '../../../../enums/text_color_type.dart';
-import '../../../../gen/assets.gen.dart';
 import '../../../../theme/app_colors.dart';
 import '../../../../theme/text_styles.dart';
 import '../../../../utils/app_validator.dart';
@@ -140,7 +139,12 @@ class PersonalDetailsScreen extends StatelessWidget {
                       ? NetworkImageWidget(url: state.selectedImage,borderRadius: 100,height: 50,width: 50,)
                       : state.selectedImage.isNotEmpty
                       ? ClipRRect(borderRadius: BorderRadius.circular(100),
-                      child: Image.file(File(state.selectedImage),fit: BoxFit.cover,))
+                      child: kIsWeb
+                          // Web has no file system. The picker returns a blob
+                          // URL there, so load it over the network instead.
+                          ? Image.network(state.selectedImage,fit: BoxFit.cover,
+                              errorBuilder: (_, __, ___) => const SizedBox())
+                          : Image.file(File(state.selectedImage),fit: BoxFit.cover,))
                       : Container(),
             ),
             InkWell(

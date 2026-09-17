@@ -1,13 +1,8 @@
-import 'dart:io';
 
 import 'package:c2c/di/app_providers.dart';
 import 'package:c2c/enums/language_code.dart';
-import 'package:c2c/enums/profile_details_type.dart';
-import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/router/navigation_methods.dart';
 import 'package:c2c/src/data/repository/local/local_repository.dart';
 import 'package:c2c/src/data/repository/remote/remote_repository.dart';
-import 'package:c2c/utils/loader_util/loading_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -20,7 +15,6 @@ import '../../../../../enums/s3_bucket_folder_enum.dart';
 import '../../../../../services/aws_s3_service.dart';
 import '../../../../../utils/common_methods.dart';
 import '../../../../../utils/logger_util.dart';
-import '../../../../../utils/snackbar_widget.dart';
 import '../../../../../widget/image_picker_bottom_sheet.dart';
 import '../state/personal_details_state.dart';
 
@@ -39,16 +33,12 @@ class PersonalDetailsNotifier extends _$PersonalDetailsNotifier {
   PersonalDetailsState build() {
     state = PersonalDetailsState(
       formKey: GlobalKey<FormState>(),
-      mobileNumberController: TextEditingController(
-        text: "AppConstants.userModel!.phone",
-      ),
+      mobileNumberController: TextEditingController(),
       numberNode: FocusNode(),
-      nameController: TextEditingController(
-        text: "AppConstants.userModel?.name "?? "",
-      ),
+      nameController: TextEditingController(),
       nameNode: FocusNode(),
       selectedLocale: AppConstants.currentLocale,
-      selectedImage: "AppConstants.userModel?.profilePicture" ?? "",
+      selectedImage: "",
     );
     return state;
   }

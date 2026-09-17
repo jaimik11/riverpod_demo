@@ -1,15 +1,13 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:io';
 
 import 'package:c2c/enums/notification_type.dart';
-import 'package:c2c/enums/user_type.dart';
 import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/router/navigation_methods.dart';
 import 'package:c2c/services/my_notification_manager.dart';
 import 'package:c2c/src/data/repository/remote/remote_repository.dart';
 import 'package:c2c/utils/common_methods.dart';
 import 'package:c2c/widget/app_dialog.dart';
-import 'package:flutter/material.dart' hide Route;
 import 'package:flutter/services.dart';
 import 'package:flutter_app_badge_control/flutter_app_badge_control.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,7 +20,6 @@ import '../../../../../constants/storage_constants.dart';
 import '../../../../../di/app_providers.dart';
 import '../../../../../enums/app_status.dart' show AppStatus;
 import '../../../../../enums/screen_state.dart';
-import '../../../../../enums/upload_type.dart';
 import '../../../../../router/app_routes.dart';
 import '../../../../../utils/logger_util.dart';
 import '../../../../data/repository/local/local_repository.dart';
@@ -299,6 +296,8 @@ class SplashNotifier extends _$SplashNotifier {
   }
 
   Future<void> _removeBadge() async {
+    // The app badge plugin has no web implementation.
+    if (kIsWeb) return;
     if (await FlutterAppBadgeControl.isAppBadgeSupported()) {
       FlutterAppBadgeControl.removeBadge();
     }

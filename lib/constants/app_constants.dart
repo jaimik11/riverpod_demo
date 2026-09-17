@@ -5,13 +5,10 @@ import 'package:c2c/l10n/localization.dart';
 
 import 'package:c2c/widget/drop_down/dropdown_model.dart';
 import 'package:flutter/material.dart' hide Banner;
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 
 import '../enums/language_code.dart';
-import '../gen/assets.gen.dart';
 import '../services/google_place/google_place_model.dart';
 import '../src/domain/model/init_model/init_model.dart';
 

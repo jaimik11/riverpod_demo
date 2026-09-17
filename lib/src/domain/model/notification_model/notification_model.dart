@@ -3,9 +3,7 @@
 //     final notificationModel = notificationModelFromJson(jsonString);
 
 import 'package:c2c/enums/notification_type.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 part 'notification_model.freezed.dart';
 part 'notification_model.g.dart';

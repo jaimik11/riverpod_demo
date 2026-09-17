@@ -1,21 +1,14 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
 import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/router/navigation_methods.dart';
-import 'package:c2c/utils/loader_util/loading_dialog.dart';
 import 'package:c2c/utils/snackbar_widget.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -27,19 +20,11 @@ import 'package:picker_pro_max_ultra/media_picker_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/app_constants.dart';
-import '../constants/app_fonts.dart';
-import '../enums/image_type.dart';
-import '../enums/language_code.dart';
-import '../gen/assets.gen.dart';
 import '../theme/app_colors.dart';
 import '../widget/app_dialog.dart';
-import '../widget/image_picker_bottom_sheet.dart';
-import '../widget/image_swiper_page.dart';
 import 'logger_util.dart';
 
-import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 class CommonMethods {

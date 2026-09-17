@@ -1,13 +1,10 @@
 import 'package:c2c/di/theme_notifier.dart';
 import 'package:c2c/router/app_pages.dart';
-import 'package:c2c/router/route_observer.dart';
 import 'package:c2c/theme/app_theme.dart';
-import 'package:c2c/utils/logger_util.dart';
 import 'package:c2c/widget/app_annotated_region.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'constants/app_constants.dart';
 import 'di/local_notifier.dart';
 import 'di/app_providers.dart';
 import 'l10n/app_localizations.dart';

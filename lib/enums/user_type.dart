@@ -1,5 +1,4 @@
 import 'package:c2c/constants/app_constants.dart';
-import 'package:c2c/enums/language_code.dart';
 import 'package:c2c/l10n/localization.dart';
 
 enum UserType {

@@ -1,8 +1,5 @@
-import 'package:c2c/enums/text_color_type.dart';
-import 'package:c2c/utils/app_extension.dart';
 import 'package:flutter/material.dart';
 import '../../gen/fonts.gen.dart';
-import '../constants/app_constants.dart';
 import 'app_colors.dart';
 
 class TextStyles {

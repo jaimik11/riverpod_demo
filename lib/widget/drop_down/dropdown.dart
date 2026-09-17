@@ -1,6 +1,4 @@
-import 'package:c2c/gen/assets.gen.dart';
 import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/router/navigation_methods.dart';
 import 'package:c2c/utils/snackbar_widget.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../enums/text_color_type.dart';
-import '../../router/route_observer.dart';
 import '../../theme/text_styles.dart';
-import '../../utils/app_validator.dart';
 import '../app_check_box.dart';
 import '../app_text_field.dart';
 import '../app_text_field_label.dart';

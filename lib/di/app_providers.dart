@@ -1,9 +1,8 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 
-import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,8 +22,6 @@ import '../src/data/repository/local/local_repository.dart';
 import '../src/data/repository/local/local_repository_impl.dart';
 import '../src/data/repository/remote/remote_repository.dart';
 import '../src/data/repository/remote/remote_repository_impl.dart';
-import '../services/my_notification_manager.dart';
-import '../utils/logger_util.dart';
 part 'app_providers.g.dart';
 
 @riverpod
@@ -52,7 +49,11 @@ void mainInit (Ref ref) async{
   );
 
   // ErrorWidget.builder = (FlutterErrorDetails details) => ErrorCrashWidget(details);
-  Hive.init((await getApplicationDocumentsDirectory()).path);
+  // Web stores Hive boxes in IndexedDB and has no documents directory,
+  // so only set a path on platforms that have one.
+  if (!kIsWeb) {
+    Hive.init((await getApplicationDocumentsDirectory()).path);
+  }
   // Hive.registerAdapter(UserModelImplAdapter()); // 👈 Register the adapter
 
   await Future.wait( [

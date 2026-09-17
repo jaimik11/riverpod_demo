@@ -1,4 +1,0 @@
-enum PickImageType {
-  camera,
-  gallery,
-}

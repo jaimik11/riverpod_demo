@@ -2,10 +2,7 @@ import 'dart:convert';
 
 import 'package:c2c/constants/api_constants.dart';
 import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/router/navigation_methods.dart';
-import 'package:c2c/services/api_service/api_response.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
@@ -13,7 +10,6 @@ import '../../constants/app_constants.dart';
 import '../../constants/storage_constants.dart';
 import '../../di/app_providers.dart';
 import '../../router/route_observer.dart';
-import '../../utils/common_methods.dart';
 import '../../utils/logger_util.dart';
 
 

@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:c2c/constants/app_constants.dart';
 import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/router/navigation_methods.dart';
 import 'package:c2c/utils/loader_util/loading_dialog.dart';
 import 'package:c2c/widget/app_dialog.dart';
 import 'package:flutter/cupertino.dart';

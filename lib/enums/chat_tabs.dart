@@ -1,4 +1,0 @@
-enum ChatTabs{
-  sellers,
-  inspectors
-}

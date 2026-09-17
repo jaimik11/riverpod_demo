@@ -1,5 +1,4 @@
 import 'package:c2c/enums/text_color_type.dart';
-import 'package:c2c/router/navigation_methods.dart';
 import 'package:c2c/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

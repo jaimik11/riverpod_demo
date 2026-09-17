@@ -1,4 +1,0 @@
-enum ImageType {
-  gallery,
-  camera,
-}

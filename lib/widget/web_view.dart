@@ -1,9 +1,6 @@
-import 'package:c2c/utils/loader_util/loading_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../constants/app_constants.dart';
 
 class WebView extends StatefulWidget {
   final String url;

@@ -1,7 +1,6 @@
 import 'package:c2c/constants/api_constants.dart';
 import 'package:c2c/constants/app_constants.dart';
 import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/utils/common_methods.dart';
 import 'package:c2c/utils/snackbar_widget.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

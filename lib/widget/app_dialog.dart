@@ -1,14 +1,11 @@
 
 import 'package:c2c/constants/app_size_constants.dart';
 import 'package:c2c/enums/text_color_type.dart';
-import 'package:c2c/router/navigation_methods.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../constants/app_constants.dart';
 import '../theme/app_colors.dart';
 import '../theme/text_styles.dart';
 import 'app_button.dart';

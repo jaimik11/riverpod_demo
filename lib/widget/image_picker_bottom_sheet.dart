@@ -3,7 +3,6 @@ import 'dart:ui';
 
 import 'package:c2c/enums/text_color_type.dart';
 import 'package:c2c/l10n/localization.dart';
-import 'package:c2c/router/navigation_methods.dart';
 import 'package:c2c/theme/app_colors.dart';
 import 'package:c2c/utils/loader_util/loading_dialog.dart';
 import 'package:file_picker/file_picker.dart';
@@ -18,7 +17,6 @@ import 'package:picker_pro_max_ultra/media_picker_widget.dart';
 
 import '../../../utils/logger_util.dart';
 
-import '../../enums/image_type.dart';
 import '../constants/app_constants.dart';
 import '../enums/picker_type.dart';
 import '../theme/text_styles.dart';
